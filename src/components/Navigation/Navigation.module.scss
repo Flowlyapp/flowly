@@ -1,0 +1,33 @@
+.nav {
+  position: relative;
+  margin: 0 0 8px;
+  background: #fff;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  border-inline-end: 1px solid #b0b0b0;
+}
+
+.item {
+  flex: 1;
+  border-inline-start: 1px solid #b0b0b0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    background: #f2f2f7;
+  }
+
+  &.current {
+    background: #cecece;
+  }
+}

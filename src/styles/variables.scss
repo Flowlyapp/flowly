@@ -1,0 +1,88 @@
+:root {
+  --app-min-width: 300px;
+  --app-max-width: 480px;
+
+  --app-spacing-2: 8px;
+  --app-spacing-4: 16px;
+  --app-spacing-6: 24px;
+  --app-spacing-8: 32px;
+  --app-spacing-10: 40px;
+  --app-spacing-edge: var(--app-spacing-4);
+
+  --app-border-radius: 6px;
+  --app-border-radius-big: 12px;
+  --app-border-radius-large: 24px;
+
+  --app-viewport-height: var(--tg-viewport-height, 100vh);
+  --app-viewport-stable-height: var(--tg-viewport-stable-height, 100vh);
+
+  --app-font-size-tiny: 11px;
+  --app-font-size-small: 13px;
+  --app-font-size-caption: 14px;
+  --app-font-size: 16px;
+  --app-font-size-big: 18px;
+  --app-font-size-bigger: 20px;
+  --app-font-size-title: 24px;
+  --app-font-size-large: 32px;
+  --app-font-line-height: 1.4;
+  --app-font-weight-normal: 400;
+  --app-font-weight-bold: 600;
+  --app-font-weight-black: 700;
+  --app--font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Apple Color Emoji', 'Helvetica Neue',
+    sans-serif;
+
+  --app-theme-bg-color: #fff;
+  --app-theme-secondary-bg-color: #f2f2f7;
+  --app-theme-header-bg-color: var(--tg-theme-header-bg-color, #fff);
+  --app-theme-text-color: #2f363d;
+  --app-theme-text-secondary-color: #3d3d3d;
+  --app-theme-hint-color: var(--tg-theme-hint-color, #707579);
+  --app-theme-link-color: var(--tg-theme-link-color, #00488f);
+  --app-theme-accent-text-color: var(--tg-theme-accent-text-color, #3390ec);
+  --app-theme-subtitle-text-color: var(--tg-theme-subtitle-text-color, #707579);
+  --app-theme-destructive-text-color: var(--tg-theme-destructive-text-color, #df3f40);
+  --app-theme-button-text-color: var(--tg-theme-button-text-color, #fff);
+  --app-theme-button-color: #007aff;
+  --app-theme-section-bg-color: var(--tg-theme-section-bg-color, #fff);
+  --app-theme-section-header-text-color: var(--tg-theme-section-header-text-color, #3390ec);
+  --app-theme-section-separator-color: var(--tg-theme-section-separator-color, #707579);
+  --app-theme-border-color: #e4e4ed;
+  --app-theme-game-color: #3582de;
+
+  --app-theme-white: #fff;
+  --app-theme-black: #000;
+  --app-theme-dark: #16191c;
+  --app-theme-success-color: #00be2a;
+  --app-theme-warning-color: #ffb800;
+  --app-theme-info-color: #005be5;
+  --app-theme-promo-color: #9038ff;
+  --app-theme-separator-color: var(--tg-theme-section-separator-color, #707579);
+  --app-theme-secondary-fill: rgba(0, 122, 255, 0.15);
+  --app-theme-shadow: rgba(255, 255, 255, 0.1);
+  --app-theme-shadow-accent: rgba(0, 123, 255, 0.4);
+  --app-theme-shadow-turbo: rgba(138, 53, 222, 0.7);
+
+  .darkTheme {
+    --app-theme-secondary-bg-color: #3c434d;
+    --app-theme-header-bg-color: var(--tg-theme-header-bg-color, #212121);
+    --app-theme-text-color: #fff;
+    --app-theme-text-secondary-color: #fff;
+    --app-theme-hint-color: var(--tg-theme-hint-color, #aaa);
+    --app-theme-link-color: var(--tg-theme-link-color, #2990ff);
+    --app-theme-accent-text-color: var(--tg-theme-accent-text-color, #007aff);
+    --app-theme-subtitle-text-color: var(--tg-theme-subtitle-text-color, #aaa);
+    --app-theme-destructive-text-color: var(--tg-theme-destructive-text-color, #e53935);
+    --app-theme-button-text-color: var(--tg-theme-button-text-color, #fff);
+    --app-theme-section-bg-color: var(--tg-theme-section-bg-color, #212121);
+    --app-theme-section-header-text-color: var(--tg-theme-section-header-text-color, #aaa);
+    --app-theme-section-separator-color: var(--tg-theme-section-separator-color, #aaa);
+    --app-theme-border-color: #48515c;
+    --app-theme-game-color: #3582de;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-theme-bg-color: #21252a;
+  }
+}

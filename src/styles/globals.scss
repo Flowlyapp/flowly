@@ -1,0 +1,66 @@
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  // position: relative;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  --panel-position: sticky;
+  width: 100%;
+  min-height: var(--app-viewport-height);
+  background-color: var(--app-theme-bg-color);
+  color: var(--app-theme-text-color);
+  font-family: var(--app--font-family);
+  font-size: var(--app-font-size);
+  font-weight: var(--app-font-weight-normal);
+  line-height: var(--app-font-line-height);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  // &.webPlatform,
+  // &.iosPlatform {
+  //   --panel-position: relative;
+  //   overflow: hidden;
+  //   height: var(--app-viewport-height);
+  // }
+
+  // &::-webkit-scrollbar {
+  //   width: 0;
+  //   height: 0;
+  // }
+}
+
+// #__next {
+//   min-height: var(--app-viewport-height);
+
+//   .webPlatform &,
+//   .iosPlatform & {
+//     height: var(--app-viewport-height);
+//   }
+// }
+
+// main {
+//   height: 100%;
+// }
+
+.ghostButton {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  outline: none;
+}
