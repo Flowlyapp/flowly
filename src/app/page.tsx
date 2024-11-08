@@ -1,6 +1,6 @@
 'use client'
 
-import WelcomeScreen from '@/components/WelcomeScreen/WelcomeScreen'
+import { ContentWrapper} from '@/components/ContentWrapper/ContentWrapper'
 
 export default function Home() {
   return (
