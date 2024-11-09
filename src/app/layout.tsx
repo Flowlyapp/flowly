@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
-
 import Layout from '../components/Layout/Layout'
 import '../styles/globals.scss'
 import Providers from './providers'
+import '@telegram-apps/telegram-ui/dist/styles.css';
+import { ContentWrapper } from '@/components/ContentWrapper/ContentWrapper'
+import { AppRoot } from '@telegram-apps/telegram-ui';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -30,11 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Providers>
-          <Layout>
-            {children}
-          </Layout>
-        </Providers>
+        <AppRoot>
+          {children}
+        </AppRoot>
       </body>
     </html>
   )
