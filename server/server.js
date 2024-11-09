@@ -13,12 +13,12 @@ app.use(cors());
 var bot = "";
 
 let upgradeToPro = async() => {
-  let titleText = "Donation";
+  let titleText = "Donation1";
   let descriptionText = "Donation";
-  let payload = { userid: 12345678 };
+  let payload = {};
   let providerToken = ""; // Leave empty string if payment in XTR (telegram stars)
   let currency = "XTR";
-  let prices = [{ label: "Price Label", amount: 1 }]; // amount - price in XTR
+  let prices = [{ label: "Donation", amount: 1 }]; // amount - price in XTR
   let obj = {
       title: titleText,
       description: descriptionText,
@@ -44,6 +44,11 @@ export async function getInvoiceLink(req, res) {
 
 let tgbotInit = async() => {
   bot = new Telegraf(process.env.TG_TOKEN);
+  bot.on("pre_checkout_query", (ctx) => {
+    return ctx.answerPreCheckoutQuery(true).catch(() => {
+      console.error("answerPreCheckoutQuery failed");
+    });
+  });
   bot.launch();
   console.log('bot launched');
 }

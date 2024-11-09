@@ -2,6 +2,8 @@
 
 import { Placeholder, Button, Text } from '@telegram-apps/telegram-ui';
 import { useRouter } from 'next/navigation'
+import TonWeb from "tonweb";
+const tonweb = new TonWeb();
 
 export default function Home() {
   const router = useRouter()
