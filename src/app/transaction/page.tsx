@@ -12,6 +12,7 @@ import {
   useTonWallet,
 } from '@tonconnect/ui-react'
 
+import TelegramStarsButton from '../../components/TelegramStarsButton/tgstarsbutton'
 import styles from './transaction.module.css'
 
 export default function Transaction() {
@@ -86,13 +87,14 @@ export const TransactionPayload = () => {
         <Input header="Wallet" placeholder="Enter wallet to transfer" onChange={handleAddressChange} />
         {wallet ? (
           <Button className={styles.button} onClick={() => tonConnectUi.sendTransaction(transferPayload)}>
-            Send transaction
+            Pay via TON
           </Button>
         ) : (
           <Button className={styles.button} onClick={() => tonConnectUi.openModal()}>
             Connect wallet to send the transaction
           </Button>
         )}
+        <TelegramStarsButton />
       </List>
       <Placeholder>
         <pre
