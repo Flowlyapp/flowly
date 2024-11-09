@@ -1,5 +1,6 @@
 import { Telegraf } from 'telegraf';
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 class TgbotService {
 

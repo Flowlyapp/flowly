@@ -6,13 +6,14 @@ const TelegramStarsButton: React.FC = () => {
   const { openInvoice } = useTelegramWebApp();
 
   const getInvoiceLink = async () => {
-    const response = await fetch('http://localhost:3000/tg/getInvoiceLink', {
+    const response = await fetch('http://localhost:3001/tg/getInvoiceLink', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
     });
     const invoiceLink = await response.json();
+    console.log('invoicedLink', invoiceLink)
     return invoiceLink;
   };
 

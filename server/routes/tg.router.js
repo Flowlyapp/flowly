@@ -1,6 +1,6 @@
 import Router from 'express';
 const router = new Router();
-import { getInvoiceLink } from '../controllers/tg/tg.controller';
+import { getInvoiceLink } from '../server.js';
 
 router.post('/getInvoiceLink', getInvoiceLink);
 
