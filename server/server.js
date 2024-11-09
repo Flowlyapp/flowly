@@ -13,8 +13,8 @@ app.use(cors());
 var bot = "";
 
 let upgradeToPro = async() => {
-  let titleText = "Some Title";
-  let descriptionText = "Some Description";
+  let titleText = "Donation";
+  let descriptionText = "Donation";
   let payload = { userid: 12345678 };
   let providerToken = ""; // Leave empty string if payment in XTR (telegram stars)
   let currency = "XTR";
