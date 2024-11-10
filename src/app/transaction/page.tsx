@@ -40,7 +40,7 @@ export default function Transaction() {
   )
 }
 
-export const ContentPayload = () => {
+const ContentPayload = () => {
   return (
     <List>
       <Placeholder header="Transaction" description="Transaction screen">
@@ -51,7 +51,7 @@ export const ContentPayload = () => {
   )
 }
 
-export const TransactionPayload = () => {
+const TransactionPayload = () => {
   const [address, setAddress] = useState('')
   const [amount, setAmount] = useState('')
   const [comment, setComment] = useState('')

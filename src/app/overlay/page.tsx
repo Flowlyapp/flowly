@@ -9,10 +9,11 @@ import styles from './styles.module.scss'
 
 // app/overlay/page.tsx
 
-interface AlertData extends Donation {
+type AlertData = Donation & {
   id: string
   timestamp: string
 }
+
 
 export default function OverlayPage() {
   const [alert, setAlert] = useState<AlertData | null>(null)
