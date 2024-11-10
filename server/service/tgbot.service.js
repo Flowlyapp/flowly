@@ -13,13 +13,13 @@ class TgbotService {
         console.log('bot launched');
     }
 
-    async upgradeToPro() {
+    async upgradeToPro(amountValue) {
         let titleText = "Some Title";
         let descriptionText = "Some Description";
         let payload = {};
         let providerToken = ""; // Leave empty string if payment in XTR (telegram stars)
         let currency = "XTR";
-        let prices = [{ label: "Donation", amount: 1 }]; // amount - price in XTR
+        let prices = [{ label: "Donation", amount: amountValue }]; // amount - price in XTR
         let obj = {
             title: titleText,
             description: descriptionText,

@@ -99,18 +99,18 @@ const SupportScreen: React.FC = () => {
     background: 'var(--tgui--secondary_bg_color)',
   }}
 >
-  <Section
+  <Section  style={{ paddingBottom: '8px' }}
   >
    <SupportHeaderScreen></SupportHeaderScreen>
   </Section>
-  <Section
+  <Section style={{ paddingBottom: '8px' }}
     header="Donate">
     <BuyMeABeer/>
   </Section>
   <Section
-    header="Donate">
-    <BuyMeABeer/>
-  </Section>
+    header="Gifts">
+      
+    </Section>
 </List>
   );
 };

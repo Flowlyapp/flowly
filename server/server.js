@@ -10,22 +10,20 @@ import { Telegraf } from 'telegraf';
 app.use(json());
 app.use(cors());
 
-var bot = "";
+let bot;
 
-let upgradeToPro = async() => {
-  let titleText = "Donation";
-  let descriptionText = "Donation";
+async function upgradeToPro(amount) {
   let payload = {};
   let providerToken = ""; // Leave empty string if payment in XTR (telegram stars)
   let currency = "XTR";
-  let prices = [{ label: "Donation", amount: 1 }]; // amount - price in XTR
+  let prices = [{ label: "Donation", amount: parseInt(amount) }]; // amount - price in XTR
   let obj = {
-      title: titleText,
-      description: descriptionText,
-      payload: payload,
-      provider_token: providerToken,
-      currency: currency,
-      prices: prices
+    title: "Donation",
+    description: "Support us with a donation",
+    payload: payload,
+    provider_token: providerToken,
+    currency: currency,
+    prices: prices
   };
 
   let result = await bot.telegram.createInvoiceLink(obj);
@@ -34,7 +32,8 @@ let upgradeToPro = async() => {
 }
 
 export async function getInvoiceLink(req, res) {
-  let result = await upgradeToPro();
+  const { amount } = req.body;
+  let result = await upgradeToPro(amount);
   if (result) {
       res.json({ success: true, data: result });
   } else {

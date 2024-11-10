@@ -30,13 +30,14 @@ export default function OverlayPage() {
 
     ws.onmessage = event => {
       try {
+        console.log('Received message:', event.data)
         const data = JSON.parse(event.data) as AlertData
         setAlert(data)
         setIsVisible(true)
 
         setTimeout(() => {
           setIsVisible(false)
-        }, 5000)
+        }, 15000)
       } catch (error) {
         console.error('Error parsing message:', error)
       }

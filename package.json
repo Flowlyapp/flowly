@@ -34,7 +34,8 @@
     "react-dom": "^18",
     "sass": "^1.79.4",
     "tonweb": "^0.0.66",
-    "ws": "^8.18.0"
+    "ws": "^8.18.0",
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.59.7",

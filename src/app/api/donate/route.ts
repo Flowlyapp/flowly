@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 import { Donation } from '@/types/donations'
 
-import { broadcastToClients } from '@/lib/socket' 
+import { broadcastToClients } from '../../lib/socket'
 
 function validateDonation(donation: Donation): boolean {
   try {
