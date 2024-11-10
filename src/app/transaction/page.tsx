@@ -18,7 +18,7 @@ import styles from './transaction.module.css'
 export default function Transaction() {
   return (
     <TonConnectUIProvider
-      manifestUrl="https://mr-procrastinator.github.io/hivebits-nft-store/tonconnect-manifest.json"
+      manifestUrl="https://gist.githubusercontent.com/mr-procrastinator/19827a4d182ab83dccd1d9035cec99bd/raw/62ea0fd09b34d0efa93263b0ebd60838455f3a12/flowly"
       uiPreferences={{ theme: THEME.DARK }}
       walletsListConfiguration={{
         includeWallets: [

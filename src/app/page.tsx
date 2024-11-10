@@ -9,6 +9,7 @@ import styles from './page.module.scss';
 
 import React, { useState } from 'react';
 import BuyMeABeer from '@/components/Donation/Donation';
+import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react';
 
 // Define types for tab items and component props
 interface Tab {
@@ -118,6 +119,24 @@ const SupportScreen: React.FC = () => {
 export default function Home() {
   const router = useRouter()
   return (
-      <Default />
+    <TonConnectUIProvider
+    manifestUrl="https://gist.githubusercontent.com/mr-procrastinator/19827a4d182ab83dccd1d9035cec99bd/raw/34104a1f0d75e3575d941385419a22d115ec799e/flowly.json"
+    uiPreferences={{ theme: THEME.DARK }}
+    walletsListConfiguration={{
+      includeWallets: [
+        {
+          appName: 'tonwallet',
+          name: 'TON Wallet',
+          imageUrl: 'https://wallet.ton.org/assets/ui/qr-logo.png',
+          aboutUrl: 'https://chrome.google.com/webstore/detail/ton-wallet/nphplpgoakhhjchkkhmiggakijnkhfnd',
+          universalLink: 'https://wallet.ton.org/ton-connect',
+          jsBridgeKey: 'tonwallet',
+          bridgeUrl: 'https://bridge.tonapi.io/bridge',
+          platforms: ['chrome', 'android'],
+        },
+      ],
+    }}
+  > <Default /></TonConnectUIProvider>
+
   )
 }

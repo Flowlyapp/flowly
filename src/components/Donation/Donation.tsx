@@ -4,6 +4,7 @@ import { useState } from 'react';
 import styles from './Donation.module.scss';
 import { Button, Cell, Checkbox, Input, Select, Text, Textarea } from '@telegram-apps/telegram-ui';
 import useTelegramWebApp from '../../app/hooks/useTelegramWebApp';
+import { SendTransactionRequest, THEME, TonConnectButton, TonConnectUIProvider, useTonConnectUI, useTonWallet } from '@tonconnect/ui-react';
 
 export default function BuyMeABeer() {
   const [selectedOption, setSelectedOption] = useState('TON');
@@ -12,6 +13,8 @@ export default function BuyMeABeer() {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
+  const wallet = useTonWallet()
+  const [tonConnectUi] = useTonConnectUI()
 
   const resetForm = () => {
     setAmount('');
@@ -34,7 +37,8 @@ export default function BuyMeABeer() {
     setName(event.target.value);
   };
 
-  const handleMessageChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  // Updated to handle any event type that has a target with value
+  const handleMessageChange = (event: { target: { value: string } }) => {
     setMessage(event.target.value);
   };
 
@@ -59,26 +63,40 @@ export default function BuyMeABeer() {
       const invoiceLink = getInvoiceLinkResult.data;
       openInvoice(invoiceLink, async (status, url) => {
         if(status === 'paid') {
-          await displayMessage();
+          await displayMessage('stars');
         }
         console.log(`Invoice Status: ${status}, Invoice URL: ${url}`);
       });
     }
   };
 
-  const handleDonateClick = () => {
+  const tonToNanoton = (value: number) => {
+    return value * 1000000000;
+  }
+
+  const transferPayload: SendTransactionRequest = {
+    validUntil: Math.floor(Date.now() / 1000) + 600,
+    messages: [
+      {
+        address: "0QDmv0ZPBEEhNJctsbNW-POmHso1VtOS7pxXqZ4A-rkoTLbo",
+        amount: tonToNanoton(Number(amount)) + '',
+      },
+    ],
+  }
+  const handleDonateClick = async () => {
     if (selectedOption === 'TON') {
-      if (isWalletConnected) {
+      if (wallet) {
         // Logic for TON payment
-        console.log('TON payment initiated');
+        let bloc = await tonConnectUi.sendTransaction(transferPayload)
+        await displayMessage('crypto');
+        console.log('TON payment initiated $', bloc);
       } else {
         // Logic to connect wallet
         console.log('Connecting wallet...');
-        setIsWalletConnected(true); // Simulate wallet connection
+        //setIsWalletConnected(true); // Simulate wallet connection
       }
     } else if (selectedOption === 'Stars') {
       // Logic for Stars payment
-      //displayMessage();
       handleOpenInvoice();
     }
   };
@@ -107,8 +125,10 @@ export default function BuyMeABeer() {
         <Input placeholder='Amount' value={amount} onChange={handleAmountChange} />
       </div>
 
-      {selectedOption === 'TON' && !isWalletConnected && (
-        <Button onClick={() => setIsWalletConnected(true)}>Connect Wallet</Button>
+      {selectedOption === 'TON' && (
+        <div className={styles.tonConnectContainer}>
+          <TonConnectButton />
+        </div>
       )}
 
       <Textarea 
@@ -123,7 +143,7 @@ export default function BuyMeABeer() {
           className={styles.donateButton}
           stretched
           onClick={handleDonateClick}
-          disabled={selectedOption === 'TON' && !isWalletConnected}
+          disabled={selectedOption === 'TON' && !wallet}
         >
           DONATE
         </Button>
@@ -131,13 +151,24 @@ export default function BuyMeABeer() {
     </div>
   );
 
-  async function displayMessage() {
-    const donationData = {
-      type: 'stars' as const,
+  async function displayMessage(type: 'crypto' | 'stars') {
+    const baseData = {
       donator: isAnonymous ? 'Anonymous' : name,
       message: message,
-      starsAmount: parseInt(amount, 10)
     };
+
+    const donationData = type === 'crypto' 
+      ? {
+          ...baseData,
+          type: 'crypto' as const,
+          currency: 'TON',
+          amount: parseFloat(amount),
+        }
+      : {
+          ...baseData,
+          type: 'stars' as const,
+          starsAmount: parseInt(amount, 10),
+        };
 
     try {
       const response = await fetch('/api/donate', {

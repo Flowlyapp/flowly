@@ -79,3 +79,10 @@
   margin-right: var(--app-spacing-6);
   text-align: center;
 }
+
+.tonConnectContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: var(--app-spacing-6);
+  padding: 8px 0;
+}
