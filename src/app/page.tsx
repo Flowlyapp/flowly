@@ -72,18 +72,18 @@ const Default: React.FC<DefaultProps> = _props => {
   )
 }
 
-const imageUrl =
-  'https://raw.githubusercontent.com/mr-procrastinator/data2/refs/heads/main/88a3789df6ea0e263f51544a80fe305f.png'
+// const imageUrl =
+// 'https://raw.githubusercontent.com/mr-procrastinator/data2/refs/heads/main/88a3789df6ea0e263f51544a80fe305f.png'
 const SupportHeaderScreen: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.profileSection}>
         <div className={styles.profileImageContainer}>
-          <Avatar size={96} src={imageUrl} className={styles.profileImage} />
+          <Avatar size={96} src="/flowly.png" className={styles.profileImage} />
           <div className={styles.liveBadge}>LIVE</div>
         </div>
-        <h2 className={styles.username}>Tea Farm</h2>
-        <p className={styles.description}>Hey Tea Farmer. Welcome to the club.</p>
+        <h2 className={styles.username}>Flowly</h2>
+        <p className={styles.description}>The easiest way to support your favourite live streamer in Telegram</p>
       </div>
       <div className={styles.tier}>
         <span className={styles.tierName}>Thanks</span>
