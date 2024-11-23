@@ -1,6 +1,8 @@
 import React from 'react'
-import useTelegramWebApp from '../../app/hooks/useTelegramWebApp'
+
 import { Button } from '@telegram-apps/telegram-ui'
+
+import useTelegramWebApp from '../../app/hooks/useTelegramWebApp'
 
 const TelegramStarsButton: React.FC = () => {
   const { openInvoice } = useTelegramWebApp()
@@ -15,7 +17,7 @@ const TelegramStarsButton: React.FC = () => {
     const invoiceLink = await response.json()
     console.log('invoicedLink', invoiceLink)
     return invoiceLink
-  };
+  }
 
   const handleOpenInvoice = async () => {
     const getInvoiceLinkResult = await getInvoiceLink()
@@ -28,10 +30,7 @@ const TelegramStarsButton: React.FC = () => {
     }
   }
 
-  return (
-    <Button onClick={handleOpenInvoice}>
-      Pay via Telegram Stars
-    </Button>
+  return <Button onClick={handleOpenInvoice}>Pay via Telegram Stars</Button>
 }
 
 export default TelegramStarsButton

@@ -15,11 +15,11 @@ import {
 } from '@telegram-apps/telegram-ui'
 import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import TonWeb from 'tonweb'
 
 import BuyMeABeer from '@/components/Donation/Donation'
+
+import styles from './page.module.scss'
 
 // Define types for tab items and component props
 interface Tab {
