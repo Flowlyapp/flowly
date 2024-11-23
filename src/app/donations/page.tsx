@@ -1,92 +1,9 @@
-// app/donations/page.tsx
 'use client'
 
 import { useState } from 'react'
 
 import { AVAILABLE_CURRENCIES, AVAILABLE_GIFTS, Donation, DonationType } from '../../types/donations'
 import styles from './styles.module.scss'
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
-
-// app/donations/page.tsx
 
 export default function DonationsPage() {
   const [donationType, setDonationType] = useState<DonationType>('crypto')
