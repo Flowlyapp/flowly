@@ -1,90 +1,85 @@
 'use client'
 
-import { Placeholder, Button, Text, Tabbar, List, Section, Cell, IconContainer, Input } from '@telegram-apps/telegram-ui';
+import React, { useState } from 'react'
+
+import {
+  Button,
+  Cell,
+  IconContainer,
+  Input,
+  List,
+  Placeholder,
+  Section,
+  Tabbar,
+  Text,
+} from '@telegram-apps/telegram-ui'
+import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react'
+import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import TonWeb from "tonweb";
-const tonweb = new TonWeb();
-import styles from './page.module.scss';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
+import TonWeb from 'tonweb'
 
-import React, { useState } from 'react';
-
-import { THEME, TonConnectUIProvider } from '@tonconnect/ui-react';
-import BuyMeABeer from '@/components/Donation/Donation';
-
+import BuyMeABeer from '@/components/Donation/Donation'
 
 // Define types for tab items and component props
 interface Tab {
-    id: number;
-    text: string;
-    icon: string;
+  id: number
+  text: string
+  icon: string
 }
 
-const Avatar = dynamic(() => import('@telegram-apps/telegram-ui').then((mod:any) => mod.Avatar), {
+const Avatar = dynamic(() => import('@telegram-apps/telegram-ui').then((mod: any) => mod.Avatar), {
   ssr: false, // Optional: Disable Server-Side Rendering for this component if necessary
 })
 
 interface DefaultProps {}
 
-const Default: React.FC<DefaultProps> = (_props) => {
-    const tabs: Tab[] = [
-        { id: 1, text: "Profile", icon: '/images/person_24.svg' },
-        { id: 2, text: "Live", icon: "/images/channel_24.svg" }
-    ];
+const Default: React.FC<DefaultProps> = _props => {
+  const tabs: Tab[] = [
+    { id: 1, text: 'Profile', icon: '/images/person_24.svg' },
+    { id: 2, text: 'Live', icon: '/images/channel_24.svg' },
+  ]
 
-    function getTabContent(tab: number) {
-        switch (tab) {
-            case 1: return <SupportScreen />;
-            case 2: return (
-              <div>
-                <img 
-                  src="/images/live.png" 
-                  alt="Live Stream" 
-                  className={styles.liveImage}
-                />
-              </div>
-            );
-            default: return null;
-        }
+  function getTabContent(tab: number) {
+    switch (tab) {
+      case 1:
+        return <SupportScreen />
+      case 2:
+        return (
+          <div>
+            <img src="/images/live.png" alt="Live Stream" className={styles.liveImage} />
+          </div>
+        )
+      default:
+        return null
     }
+  }
 
-    const [currentTab, setCurrentTab] = useState<number>(tabs[0].id);
+  const [currentTab, setCurrentTab] = useState<number>(tabs[0].id)
 
-    
-    return (
-        <div style={{ width: '100vw', height: '100vh' }}>
-           <div style={{ paddingBottom: '96px' }}>
-            {getTabContent(currentTab)}
-           </div>
-         
-            <Tabbar>
-                {tabs.map(({ id, text, icon }) => (
-                    <Tabbar.Item
-                        key={id}
-                        text={text}
-                        selected={id === currentTab}
-                        onClick={() => setCurrentTab(id)}
-                    >
-                        <img src={icon} alt={text} />
-                    </Tabbar.Item>
-                ))}
-            </Tabbar>
-        </div>
-    );
-};
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <div style={{ paddingBottom: '96px' }}>{getTabContent(currentTab)}</div>
 
-var imageUrl = "https://raw.githubusercontent.com/mr-procrastinator/data2/refs/heads/main/88a3789df6ea0e263f51544a80fe305f.png";
+      <Tabbar>
+        {tabs.map(({ id, text, icon }) => (
+          <Tabbar.Item key={id} text={text} selected={id === currentTab} onClick={() => setCurrentTab(id)}>
+            <img src={icon} alt={text} />
+          </Tabbar.Item>
+        ))}
+      </Tabbar>
+    </div>
+  )
+}
+
+const imageUrl =
+  'https://raw.githubusercontent.com/mr-procrastinator/data2/refs/heads/main/88a3789df6ea0e263f51544a80fe305f.png'
 const SupportHeaderScreen: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.profileSection}>
         <div className={styles.profileImageContainer}>
-        <Avatar
-        size={96}
-        src={imageUrl}
-        className={styles.profileImage}
-        />
+          <Avatar size={96} src={imageUrl} className={styles.profileImage} />
           <div className={styles.liveBadge}>LIVE</div>
         </div>
         <h2 className={styles.username}>Tea Farm</h2>
@@ -103,8 +98,8 @@ const SupportHeaderScreen: React.FC = () => {
         <span className={styles.price}>100 USDT/month</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const SupportScreen: React.FC = () => {
   return (
@@ -117,18 +112,14 @@ const SupportScreen: React.FC = () => {
         <SupportHeaderScreen></SupportHeaderScreen>
       </Section>
       <Section style={{ paddingBottom: '8px' }} header="Donate">
-        <BuyMeABeer/>
+        <BuyMeABeer />
       </Section>
       <Section header="Gifts">
-        <img 
-          src="/images/gift_group2.png" 
-          alt="Gift Group" 
-          className={styles.giftImage}
-        />
+        <img src="/images/gift_group2.png" alt="Gift Group" className={styles.giftImage} />
       </Section>
     </List>
-  );
-};
+  )
+}
 
 export default function Home() {
   const router = useRouter()
@@ -150,7 +141,7 @@ export default function Home() {
           },
         ],
       }}
-    > 
+    >
       <Default />
     </TonConnectUIProvider>
   )

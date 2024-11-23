@@ -1,22 +1,22 @@
-import { useCallback } from 'react';
+import { useCallback } from 'react'
 
 const useTelegramWebApp = () => {
   // Checking if Telegram WebApp API is available
-  const isTelegramWebAppAvailable = typeof window !== 'undefined' && window.Telegram && window.Telegram.WebApp;
+  const isTelegramWebAppAvailable = typeof window !== 'undefined' && window.Telegram && window.Telegram.WebApp
 
   // Function for opening an invoice
   const openInvoice = useCallback(
     (invoiceLink: string, callback: (status: string, url?: string) => void) => {
       if (isTelegramWebAppAvailable) {
-        window.Telegram.WebApp.openInvoice(invoiceLink, callback);
+        window.Telegram.WebApp.openInvoice(invoiceLink, callback)
       } else {
-        console.warn('Telegram WebApp API is not available.');
+        console.warn('Telegram WebApp API is not available.')
       }
     },
-    [isTelegramWebAppAvailable]
-  );
+    [isTelegramWebAppAvailable],
+  )
 
-  return { openInvoice, isTelegramWebAppAvailable };
-};
+  return { openInvoice, isTelegramWebAppAvailable }
+}
 
-export default useTelegramWebApp;
+export default useTelegramWebApp

@@ -59,7 +59,7 @@ const TransactionPayload = () => {
     setAddress(event?.target?.value)
   }
   const handleAmountChange: InputProps['onChange'] = event => {
-    let value = event?.target?.value
+    const value = event?.target?.value
     if (/^\d*[\.,]?\d*$/.test(value)) {
       setAmount(value.replace(',', '.'))
     }
